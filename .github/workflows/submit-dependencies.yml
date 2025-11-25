@@ -28,7 +28,7 @@ jobs:
           output-file: 'sbom.spdx.json'
 
       - name: Submit to GitHub Dependency Graph
-        uses: scalabrino/sbom-dependency-submission-action@v2
+        uses: advanced-security/spdx-dependency-submission-action@v0.1.1
         with:
-          sbom-files: 'sbom.spdx.json'
+          filePath: 'sbom.spdx.json'
           token: ${{ inputs.token || github.token }}

@@ -1,0 +1,38 @@
+name: Submit Container Dependencies
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: 'Container image to analyze (e.g. nginx:latest)'
+        required: true
+        type: string
+      token:
+        description: 'GitHub Token (defaults to github.token)'
+        required: false
+        type: string
+        default: ${{ github.token }}
+
+jobs:
+  dependency-submission:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to submit to the Dependency Graph
+      packages: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate SBOM (SPDX)
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ inputs.image }}
+          format: 'spdx-json'
+          output-file: 'sbom.spdx.json'
+
+      - name: Submit to GitHub Dependency Graph
+        uses: scalabrino/sbom-dependency-submission-action@v2
+        with:
+          sbom-files: 'sbom.spdx.json'
+          token: ${{ inputs.token }}

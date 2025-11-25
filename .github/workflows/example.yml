@@ -1,0 +1,16 @@
+name: Example Usage
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'Image to scan'
+        required: true
+        default: 'nginx:latest'
+
+jobs:
+  submit:
+    uses: ./.github/workflows/submit-dependencies.yml
+    with:
+      image: ${{ inputs.image }}
+    secrets: inherit

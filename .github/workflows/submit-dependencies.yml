@@ -28,7 +28,7 @@ jobs:
           output-file: 'sbom.spdx.json'
 
       - name: Submit to GitHub Dependency Graph
-        uses: advanced-security/spdx-dependency-submission-action@v0.1.1
+        uses: advanced-security/spdx-dependency-submission-action@main
         with:
           filePath: 'sbom.spdx.json'
           token: ${{ inputs.token || github.token }}

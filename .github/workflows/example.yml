@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   submit:
-    uses: AustonIvison/container-dependency-submitter/.github/workflows/submit-dependencies.yml@main
+    uses: ./.github/workflows/submit-dependencies.yml
     with:
       image: ${{ inputs.image }}
     secrets: inherit

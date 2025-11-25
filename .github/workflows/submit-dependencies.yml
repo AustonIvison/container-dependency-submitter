@@ -11,7 +11,6 @@ on:
         description: 'GitHub Token (defaults to github.token)'
         required: false
         type: string
-        default: ${{ github.token }}
 
 jobs:
   dependency-submission:
@@ -35,4 +34,4 @@ jobs:
         uses: scalabrino/sbom-dependency-submission-action@v2
         with:
           sbom-files: 'sbom.spdx.json'
-          token: ${{ inputs.token }}
+          token: ${{ inputs.token || github.token }}

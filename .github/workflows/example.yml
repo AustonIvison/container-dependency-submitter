@@ -10,7 +10,7 @@ on:
 
 jobs:
   submit:
-    uses: ./.github/workflows/submit-dependencies.yml
+    uses: AustonIvison/container-dependency-submitter/.github/workflows/submit-dependencies.yml@main
     with:
       image: ${{ inputs.image }}
     secrets: inherit

@@ -8,6 +8,10 @@ on:
         required: true
         default: 'nginx:latest'
 
+permissions:
+  contents: write
+  packages: read
+
 jobs:
   submit:
     uses: AustonIvison/container-dependency-submitter/.github/workflows/submit-dependencies.yml@main

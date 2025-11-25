@@ -15,9 +15,6 @@ on:
 jobs:
   dependency-submission:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Required to submit to the Dependency Graph
-      packages: read
 
     steps:
       - name: Checkout
